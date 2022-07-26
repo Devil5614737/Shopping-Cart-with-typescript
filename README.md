@@ -7,4 +7,4 @@ Fully functional Ecommerce Web-App built with React,Typescript and Bootstrap..
  * Update Quantity of cart items
 
 
-Demo-Link   <http://example.com/>
+Demo-Link   <https://shopping-cart-with-typescript-eta.vercel.app/>
