@@ -1,7 +1,7 @@
 Fully functional Ecommerce Web-App built with React,Typescript and Bootstrap..
 
  
- * Features
+  Features
  * Update CartItems
  * Delete CarItems
  * Update Quantity of cart items
