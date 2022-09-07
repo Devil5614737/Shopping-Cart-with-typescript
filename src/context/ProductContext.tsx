@@ -14,7 +14,7 @@ interface ContextProps {
 
 export const ProductProvider = ({ children }: ContextProps) => {
   const [products, setProducts] = useState<Products[]>([]);
-  const [cartItems,setCartItems]=useState<Products[]>([])
+  const [cartItems,setCartItems]=useState<Products[]>(getCartItems())
 
   const fetchProducts = async () => {
     const res = await fetch(
@@ -41,13 +41,18 @@ if(cartItems.includes(item)){
   return alert('already added to cart')
 }else{
 
-  setCartItems([...cartItems,item])
+  setCartItems([...cartItems,item]);
+  
 }
+
+
 
   }
 
   const deleteCartItem=(id:number)=>{
-setCartItems(cartItems.filter(item=>item.id!==id))
+    const item=cartItems.filter(item=>item.id!==id)
+setCartItems(item)
+localStorage.setItem('items',JSON.stringify(item))
   }
 
 const cartIncreaseQuantity=(id:number)=>{
@@ -59,8 +64,19 @@ setCartItems(cartItems.map(item=>item.id===id?{...item,quantity:item.quantity-(i
 
 
 
+useEffect(()=>{
+  localStorage.setItem('items',JSON.stringify(cartItems))
+  },[cartItems])
 
 
+function getCartItems(){
+ const items=localStorage.getItem('items');
+ if(items){
+  return JSON.parse(items)
+ }else{
+  return []
+ }
+}
 
 
   return (

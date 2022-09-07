@@ -2,6 +2,7 @@ import React, { useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { FaTrash} from 'react-icons/fa';
+import { AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai';
 import { ProductContext } from '../context/ProductContext';
 import { ProductsContextType } from '../interfaces/ProductsContextType';
 
@@ -38,9 +39,9 @@ const subTotal=cartItems.map(item=>item.price).reduce((a,b)=>a+b,0)*totalQuantit
             objectFit:'cover'
           }} src={cartItem.image} alt='item'/>
           <div className='d-flex align-items-center'>
-            <Button className='rounded-circle btn-sm fs-6' variant='outline-primary' onClick={()=>cartIncreaseQuantity(cartItem.id)}>+</Button>
+            <Button className='rounded-circle btn-sm fs-6' variant='outline-primary' onClick={()=>cartIncreaseQuantity(cartItem.id)}><AiOutlinePlus/></Button>
            <Button  className='mx-1' variant='outline-primary'>{cartItem.quantity}</Button>
-            <Button className='rounded-circle btn-sm fs-6' variant='outline-primary' onClick={()=>cartDecreaseQuantity(cartItem.id)}>-</Button>
+            <Button className='rounded-circle btn-sm fs-6 grid ' variant='outline-primary' onClick={()=>cartDecreaseQuantity(cartItem.id)}><AiOutlineMinus/></Button>
           </div>
           <Button onClick={()=>deleteCartItem(cartItem.id)} className='rounded-circle' variant=' btn-outline-danger'>
           <FaTrash/>
